@@ -241,7 +241,7 @@ test("Use function for data source", function() {
         .appendTo("#container").autoSuggest(get_data, options);
 
     el.focus();
-    el.val("Y")
+    el.val("Y");
     el.simulate("keydown", {"keyCode": keyCode.Y});
     stop();
     setTimeout(function() {
