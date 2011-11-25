@@ -46,6 +46,8 @@
             showResultList: true,
             showResultListWhenNoMatch: false,
             canGenerateNewSelections: true,
+            scroll: false,
+            scrollHeight: 200,
             start: function(){},
             selectionClick: function( elem ){},
             selectionAdded: function( elem ){},
@@ -413,6 +415,11 @@
                         results_ul.html( "<li class='as-message'>" + opts.emptyText + "</li>" );
                     }
                     results_ul.css( "width", selections_holder.outerWidth() );
+                    if ( opts.scroll ) {
+                        results_ul.css({
+                            "max-height": opts.scrollHeight,
+                            "overflow-y": "scroll"
+                        });
                     }
                     if ( matchCount > 0 ) {
                         results_holder.show();
@@ -465,6 +472,10 @@
                         lis.removeClass( "active" );
                         start.addClass( "active" );
                         start.focus();
+                        // Handle scrolling
+                        if ( opts.scroll && start.length && ( start.position().top + start.height() > $( results_ul ).height() || start.position().top < 0 ) ) {
+                            $( results_ul ).scrollTop( $( results_ul ).scrollTop() + ( start.position().top ) );
+                        }
                     }
                 };
 
