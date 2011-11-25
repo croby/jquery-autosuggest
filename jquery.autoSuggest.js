@@ -248,6 +248,9 @@
                                     opts.selectionClick.call( this, org_li.prev() );
                                     org_li.prev().addClass( "selected" );
                                 }
+                                if ( org_li.prev().length === 0 && opts.usePlaceholder ) {
+                                    input.attr( "placeholder", opts.startText);
+                                }
                             }
                             if ( input.val().length === 1 ) {
                                 results_holder.hide();
@@ -421,6 +424,7 @@
 
                 var add_selected_item = function( data, num ) {
                     values_input.val( ( values_input.val() || "," ) + data[ opts.selectedValuesProp ] + "," );
+                    input.removeAttr( "placeholder" );
                     var item = $( "<li class='as-selection-item' id='as-selection-" + num + "' data-value='" + data[ opts.selectedValuesProp ] + "'></li>" ).click(function() {
                             opts.selectionClick.call( this, $( this ) );
                             selections_holder.children().removeClass( "selected" );
@@ -433,6 +437,9 @@
                             opts.selectionRemoved.call( this, item );
                             input_focus = true;
                             input.focus();
+                            if ( org_li.prev().length === 0 && opts.usePlaceholder ) {
+                                input.attr( "placeholder", opts.startText);
+                            }
                             return false;
                         });
                     org_li.before( item.html( data[ opts.selectedItemProp ] ).prepend( close ) );
