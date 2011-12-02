@@ -415,7 +415,7 @@
                                 "overflow-y": "scroll"
                             });
                         }
-                        if ( matchCount > 0 ) {
+                        if ( matchCount > 0 || opts.showResultListWhenNoMatch ) {
                             input.data( "results_holder" ).show();
                         } else if ( !opts.showResultListWhenNoMatch ) {
                             input.data( "results_holder" ).hide();
