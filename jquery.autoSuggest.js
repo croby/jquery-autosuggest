@@ -426,7 +426,7 @@
                         if ( input.data( "opts" ).scroll ) {
                             input.data( "results_ul" ).css({
                                 "max-height": input.data( "opts" ).scrollHeight,
-                                "overflow-y": "auto"
+                                "overflow-y": "scroll"
                             });
                         }
                         if ( matchCount > 0 || input.data( "opts" ).showResultListWhenNoMatch ) {
