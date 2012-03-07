@@ -111,9 +111,11 @@
                         if ( !input.data( "opts" ).asHtmlID ) {
                             x = x + "" + Math.floor( Math.random() * 100 ); //this ensures there will be unique IDs on the page if autoSuggest() is called multiple times
                             input.data( "x_id", "as-input-" + x);
+                            $(input).siblings('label').attr('for', 'as-input-' + x);
                         } else {
                             x = input.data( "opts" ).asHtmlID;
                             input.data( "x_id", x);
+                            $(input).siblings('label').attr('for', x);
                         }
                         input.data( "opts" ).start.call( this, {
                             add: function( data ) {
